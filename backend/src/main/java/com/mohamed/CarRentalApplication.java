@@ -1,4 +1,4 @@
-package com.mohamed.car_rental;
+package com.mohamed;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,20 @@
+# Configure the datasource for connecting to MySQL database
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/car_rental
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    hibernate:
+      # Automatically create and drop the database schema on startup
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        # Enable pretty-printing of SQL queries for better readability
+        format_sql: true
+    # Specify the database type
+    database: mysql
+    # Set the Hibernate dialect for MySQL 8
+    database-platform: org.hibernate.dialect.MySQL8Dialect
