@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from '../../../../../utils/custom-validator';
 
 @Component({
   selector: 'app-register',
@@ -17,10 +18,14 @@ export class RegisterComponent {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      name: ["", [Validators.required], Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]*$')],
+      name: ["", [Validators.required ]],
       email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(8)]],
+      password: ["", [Validators.required, CustomValidators.passwordStrength()]],
     });
+  }
+
+  register() {
+    console.log(this.registerForm.value);
   }
 
   get name() {
@@ -34,7 +39,6 @@ export class RegisterComponent {
   get password() {
     return this.registerForm.get('password');
   }
-
 
 
 }
