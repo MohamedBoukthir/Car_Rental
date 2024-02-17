@@ -6,5 +6,6 @@ import com.mohamed.dto.UserDto;
 public interface AuthenticationService {
 
     UserDto createCustomer(RegisterRequest registerRequest);
+    boolean hasCustomerWithEmail(String email);
 
 }

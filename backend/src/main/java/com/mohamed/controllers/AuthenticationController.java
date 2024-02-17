@@ -19,10 +19,11 @@ public class AuthenticationController {
 
     @RequestMapping("/register")
     public ResponseEntity<?> registerCustomer(@RequestBody RegisterRequest registerRequest){
+        if (authenticationService.hasCustomerWithEmail(registerRequest.getEmail()))
+            return new ResponseEntity<>("This Email Already Exist !",HttpStatus.NOT_ACCEPTABLE);
         UserDto createdCustomerDto = authenticationService.createCustomer(registerRequest);
-        if (createdCustomerDto == null) return new ResponseEntity<>(
-                "Customer Not Created, Try Again.", HttpStatus.BAD_REQUEST
-        );
+        if (createdCustomerDto == null)
+            return new ResponseEntity<>("Customer Not Created, Try Again.", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(createdCustomerDto, HttpStatus.CREATED);
     }
 
