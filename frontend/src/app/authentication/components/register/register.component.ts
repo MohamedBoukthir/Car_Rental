@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../../../utils/custom-validator';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +16,10 @@ export class RegisterComponent {
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthenticationService,
+    private toastr: ToastrService,
+    private router: Router
     ) {}
 
   ngOnInit() {
@@ -26,6 +32,15 @@ export class RegisterComponent {
 
   register() {
     console.log(this.registerForm.value);
+    this.authService.register(this.registerForm.value).subscribe((res) => {
+      console.log(res);
+      if(res.id != null) {
+        this.toastr.success('You are Welcome' ,'Registration successful');
+        this.router.navigateByUrl('/login');
+      } else {
+        this.toastr.error('Something went wrong', 'Registration failed');
+      }
+    })
   }
 
   get name() {
