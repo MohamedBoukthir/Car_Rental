@@ -5,6 +5,7 @@ import com.mohamed.dto.UserDto;
 import com.mohamed.entities.User;
 import com.mohamed.enums.UserRole;
 import com.mohamed.repositories.UserRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,20 @@ import org.springframework.stereotype.Service;
 public class AuthenticationServiceImpl implements AuthenticationService{
 
     private final UserRepository userRepository;
+
+    @PostConstruct
+    public void createAdminAccount(){
+        User adminAccount = userRepository.findByUserRole(UserRole.ADMIN);
+        if (adminAccount == null) {
+            User newAdminAccount = new User();
+            newAdminAccount.setName("Admin");
+            newAdminAccount.setEmail("admin@gmail.com");
+            newAdminAccount.setPassword(new BCryptPasswordEncoder().encode("admin"));
+            newAdminAccount.setUserRole(UserRole.ADMIN);
+            userRepository.save(newAdminAccount);
+            System.out.println("ADMIN Account Created Successfully.");
+        }
+    }
 
     @Override
     public UserDto createCustomer(RegisterRequest registerRequest) {
