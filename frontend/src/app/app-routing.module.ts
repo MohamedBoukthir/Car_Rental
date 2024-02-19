@@ -6,6 +6,8 @@ import { LoginComponent } from './authentication/components/login/login.componen
 const routes: Routes = [
   {path:'register', component: RegisterComponent },
   {path: 'login', component: LoginComponent},
+  {path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)},
+  {path: 'customer', loadChildren: () => import('./modules/customer/customer.module').then(m => m.CustomerModule)},
 ];
 
 @NgModule({
