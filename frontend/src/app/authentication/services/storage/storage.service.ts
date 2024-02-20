@@ -39,13 +39,18 @@ static getUserRole(): string {
 static isAdminLoggedIn(): boolean {
   if(this.getToken() == null) return false;
   const role : string = this.getUserRole();
-  return role === 'ADMIN';
+  return role == 'ADMIN';
 }
 
 static isCustomerLoggedIn(): boolean {
   if(this.getToken() == null) return false;
   const role : string = this.getUserRole();
-  return role === 'CUSTOMER';
+  return role == 'CUSTOMER';
+}
+
+static logOut(): void {
+  window.localStorage.removeItem(TOKEN);
+  window.localStorage.removeItem(USER);
 }
 
 

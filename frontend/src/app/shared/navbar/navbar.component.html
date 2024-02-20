@@ -1,4 +1,5 @@
-<div class="navbar bg-base-100">
+<!-- Original Navbar -->
+<div class="navbar bg-base-100" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
     <div class="navbar-start">
         <a class="btn btn-ghost text-xl"
            routerLink="login"
@@ -12,6 +13,42 @@
         </button>
         <button class="btn btn-primary" routerLink="login" routerLinkActive="active">
             Login
+        </button>
+    </div>
+</div>
+<!-- Admin Navbar -->
+<div class="navbar bg-base-100" *ngIf="isAdminLoggedIn">
+    <div class="navbar-start">
+        <a class="btn btn-ghost text-xl"
+           routerLink="login"
+        >
+            Admin
+        </a>
+    </div>
+    <div class="navbar-end gap-3">
+        <button class="btn btn-outline btn-primary" routerLink="admin/dashboard" routerLinkActive="active">
+            Dashboard
+        </button>
+        <button class="btn btn-primary" (click)="logOut()" routerLinkActive="active">
+            LogOut
+        </button>
+    </div>
+</div>
+<!-- Customer Navbar -->
+<div class="navbar bg-base-100" *ngIf="isCustomerLoggedIn">
+    <div class="navbar-start">
+        <a class="btn btn-ghost text-xl"
+           routerLink="login"
+        >
+            SwiftWheels
+        </a>
+    </div>
+    <div class="navbar-end gap-3">
+        <button class="btn btn-outline btn-primary" routerLink="customer/dashboard" routerLinkActive="active">
+            Dashboard
+        </button>
+        <button class="btn btn-primary" (click)="logOut()" routerLinkActive="active">
+            LogOut
         </button>
     </div>
 </div>
