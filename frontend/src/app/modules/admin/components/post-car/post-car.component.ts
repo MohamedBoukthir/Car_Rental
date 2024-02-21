@@ -35,6 +35,20 @@ export class PostCarComponent {
     })
   }
 
+  AddNewCar(){
+    console.log(this.addCarForm.value);
+    const formData: FormData = new FormData();
+    formData.append('img', this.selectedFile);
+    formData.append('year', this.addCarForm.get('year')?.value);
+    formData.append('price', this.addCarForm.get('price')?.value);
+    formData.append('transmission', this.addCarForm.get('transmission')?.value);
+    formData.append('brand', this.addCarForm.get('brand')?.value);
+    formData.append('type', this.addCarForm.get('type')?.value);
+    formData.append('color', this.addCarForm.get('color')?.value);
+    formData.append('description', this.addCarForm.get('description')?.value);
+    console.log(formData);
+  }
+
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.previewImage();
