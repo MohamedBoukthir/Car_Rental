@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-car',
@@ -21,7 +21,19 @@ export class PostCarComponent {
 
   constructor(
     private fb: FormBuilder
-  ) { }
+  ) {}
+
+  ngOnInit() {
+    this.addCarForm = this.fb.group({
+      year: ['', Validators.required],
+      price: ['', Validators.required],
+      transmission: ['', Validators.required],
+      brand: ['', Validators.required],
+      type: ['', Validators.required],
+      color: ['', Validators.required],
+      description: ['', Validators.required],
+    })
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -36,6 +48,29 @@ export class PostCarComponent {
     reader.readAsDataURL(this.selectedFile);
   }
 
- 
+  get year() {
+    return this.addCarForm.get('year');   
+  }
+  get price() {
+    return this.addCarForm.get('price');   
+  }
+  get transmission() {
+    return this.addCarForm.get('transmission');
+  }
+
+  get brand() {
+    return this.addCarForm.get('brand');
+  }
+
+  get type() {
+    return this.addCarForm.get('type');
+  }
+
+  get color() {
+    return this.addCarForm.get('color');
+  }
+  get description() {
+    return this.addCarForm.get('description');
+  }
 
 }

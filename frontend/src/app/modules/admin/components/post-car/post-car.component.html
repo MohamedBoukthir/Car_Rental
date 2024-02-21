@@ -1,5 +1,5 @@
 <div class="flex a justify-center mt-28">
-    <form class="w-full max-w-lg">
+    <form class="w-full max-w-lg" [formGroup]="addCarForm">
         <div class="flex items-center justify-center mb-8">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" *ngIf="selectedFile">
                 <img [src]="imagePreview" alt="Profile"/>
@@ -15,7 +15,7 @@
                 </label>
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-200 focus:border-gray-500"
-                    id="grid-modelYear" type="text" placeholder="(e.g., 2017)">
+                    type="text" placeholder="(e.g., 2017)" formControlName="year">
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
@@ -23,7 +23,7 @@
                 </label>
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-price" type="text" placeholder="$">
+                    type="text" placeholder="$" formControlName="price">
             </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -34,7 +34,7 @@
                 <div class="relative">
                     <select
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-transmission">
+                        formControlName="transmission">
                         <option *ngFor="let transmission of listOfTransmission" [value]="transmission"> {{ transmission }} </option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -53,7 +53,7 @@
                 <div class="relative">
                     <select
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-brand">
+                        formControlName="brand">
                         <option *ngFor="let brand of listOfBrands" [value]="brand"> {{ brand }} </option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -70,8 +70,8 @@
                 <div class="relative">
                     <select
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-type">
-                        <option *ngFor="let type of listOfType"> {{ type }} </option>
+                        formControlName="type">
+                        <option *ngFor="let type of listOfType" [value]="type"> {{ type }} </option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -87,8 +87,8 @@
                 <div class="relative">
                     <select
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-state">
-                        <option *ngFor="let color of listOfColor" > {{ color }} </option>
+                        formControlName="color">
+                        <option *ngFor="let color of listOfColor" [value]="color"> {{ color }} </option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -105,7 +105,7 @@
                     Description
                 </label>
                 <div class="relative">
-                    <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Description" cols="10" rows="5"></textarea>
+                    <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Description" cols="10" rows="5" formControlName="description"></textarea>
                 </div>
             </div>
         </div>
