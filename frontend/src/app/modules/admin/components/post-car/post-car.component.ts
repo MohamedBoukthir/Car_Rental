@@ -32,6 +32,7 @@ export class PostCarComponent {
       type: ['', Validators.required],
       color: ['', Validators.required],
       description: ['', Validators.required],
+      name: ['', Validators.required]
     })
   }
 
@@ -40,6 +41,7 @@ export class PostCarComponent {
     const formData: FormData = new FormData();
     formData.append('img', this.selectedFile);
     formData.append('year', this.addCarForm.get('year')?.value);
+    formData.append('name', this.addCarForm.get('name')?.value);
     formData.append('price', this.addCarForm.get('price')?.value);
     formData.append('transmission', this.addCarForm.get('transmission')?.value);
     formData.append('brand', this.addCarForm.get('brand')?.value);
@@ -65,9 +67,11 @@ export class PostCarComponent {
   get year() {
     return this.addCarForm.get('year');   
   }
+
   get price() {
     return this.addCarForm.get('price');   
   }
+
   get transmission() {
     return this.addCarForm.get('transmission');
   }
@@ -83,8 +87,12 @@ export class PostCarComponent {
   get color() {
     return this.addCarForm.get('color');
   }
+
   get description() {
     return this.addCarForm.get('description');
   }
+ get name() {
+    return this.addCarForm.get('name');
+ }
 
 }
