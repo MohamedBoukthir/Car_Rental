@@ -5,6 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PostCarComponent } from './components/post-car/post-car.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -16,7 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ]
 })
 export class AdminModule { }
