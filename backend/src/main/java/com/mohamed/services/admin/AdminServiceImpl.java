@@ -7,10 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
     private final CarRepository carRepository;
 
@@ -32,7 +34,10 @@ public class AdminServiceImpl implements AdminService{
         } catch (Exception exception) {
             return false;
         }
+    }
 
-
+    @Override
+    public List<CarDto> getAllCars() {
+        return carRepository.findAll().stream().map(Car::getCarDto).collect(Collectors.toList());
     }
 }
