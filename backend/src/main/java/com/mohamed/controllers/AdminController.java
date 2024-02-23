@@ -20,7 +20,7 @@ public class AdminController {
     private final AdminService adminService;
 
     // add car
-    @PostMapping("add-car")
+    @PostMapping("/add-car")
     public ResponseEntity<?> addCar(@ModelAttribute CarDto carDto) throws IOException {
         boolean success = adminService.addCar(carDto);
         if (success) {

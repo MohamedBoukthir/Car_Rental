@@ -3,7 +3,6 @@ package com.mohamed.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
 
 @Entity
 @Data
@@ -20,7 +19,7 @@ public class Car {
     private String transmission;
     private String description;
     private Long price;
-    private Date year;
+    private String year;
     @Column(columnDefinition = "longblob")
     private byte[] image;
 

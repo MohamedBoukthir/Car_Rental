@@ -23,9 +23,11 @@ public class AdminServiceImpl implements AdminService{
             car.setColor(carDto.getColor());
             car.setPrice(carDto.getPrice());
             car.setYear(carDto.getYear());
+            car.setType(carDto.getType());
             car.setDescription(carDto.getDescription());
             car.setTransmission(carDto.getTransmission());
             car.setImage(carDto.getImage().getBytes());
+            carRepository.save(car);
             return true;
         } catch (Exception exception) {
             return false;

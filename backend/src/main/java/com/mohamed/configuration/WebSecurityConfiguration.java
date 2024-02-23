@@ -33,8 +33,8 @@ public class WebSecurityConfiguration {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("api/v1/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
-                        .requestMatchers("api/v1/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
+                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers("/api/v1/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
                         .anyRequest().authenticated()).sessionManagement
                         (management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

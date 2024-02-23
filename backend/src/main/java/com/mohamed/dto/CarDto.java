@@ -3,7 +3,6 @@ package com.mohamed.dto;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
 
 @Data
 public class CarDto {
@@ -16,7 +15,7 @@ public class CarDto {
     private String transmission;
     private String description;
     private Long price;
-    private Date year;
+    private String year;
     private MultipartFile image;
     private byte[] returnedImg;
 
