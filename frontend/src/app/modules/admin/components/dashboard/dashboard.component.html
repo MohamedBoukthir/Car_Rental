@@ -25,6 +25,10 @@
                 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Model
                 Year : {{ car.year }} </span>
         </div>
+        <!-- Button -->
+        <div class="flex items-center justify-center mb-2">
+            <button class="btn btn-primary text-white" (click)="deleteCar(car.id)">Delete</button>
+        </div>
     </div>
 
 </div>

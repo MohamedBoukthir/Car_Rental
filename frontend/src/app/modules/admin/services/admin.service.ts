@@ -25,6 +25,13 @@ export class AdminService {
     });
   }
 
+  // function to delete car by id
+  deleteCar(id : number): Observable<any> {
+    return this.http.delete(BASE_URL + 'car/' + id , {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(

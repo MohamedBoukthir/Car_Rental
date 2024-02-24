@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,10 @@ import { AdminService } from '../../services/admin.service';
 export class DashboardComponent {
   cars: any = [];
 
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    private toastr: ToastrService
+    ) {}
 
   ngOnInit() {
     this.getAllCars();
@@ -25,4 +29,14 @@ export class DashboardComponent {
       });
     });
   }
+
+  deleteCar(id : number){
+    console.log(id)
+    this.adminService.deleteCar(id).subscribe((res) => {
+      // Remove the deleted car from the cars array
+      this.cars = this.cars.filter((car: any) => car.id !== id);
+      this.toastr.success('Car deleted successfully', 'Success');
+    })
+  }
+
 }
