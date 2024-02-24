@@ -1,4 +1,4 @@
-<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+<div class="p-10 grid grid-cols-1 shadow-gray-950 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
     <!--Card -->
     <div class="rounded overflow-hidden shadow-lg" *ngFor="let car of cars">
         <img class="w-full" [src]="car.processedImg" alt="Cars">
@@ -25,8 +25,12 @@
                 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Model
                 Year : {{ car.year }} </span>
         </div>
-        <!-- Button -->
-        <div class="flex items-center justify-center mb-2">
+
+        
+        <div class="flex items-center justify-center mb-2 gap-2">
+            <!-- Update Button -->
+            <button class="btn btn-primary text-white" routerLink="/admin/car/{{car.id}}">Update</button>
+            <!-- Delete Button -->
             <button class="btn btn-primary text-white" (click)="deleteCar(car.id)">Delete</button>
         </div>
     </div>
