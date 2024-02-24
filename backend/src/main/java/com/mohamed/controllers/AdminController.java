@@ -40,4 +40,11 @@ public class AdminController {
         return ResponseEntity.ok(null);
     }
 
+    // get car by id
+    @GetMapping("car/{id}")
+    public ResponseEntity<CarDto> getCarById(@PathVariable Long id) {
+        CarDto carDto = adminService.getCarById(id);
+        return ResponseEntity.ok(carDto);
+    }
+
 }
