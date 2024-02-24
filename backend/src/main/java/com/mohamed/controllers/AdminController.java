@@ -33,4 +33,11 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllCars());
     }
 
+    // delete car
+    @DeleteMapping("/car/{id}")
+    public ResponseEntity<Void> deleteCar(@PathVariable Long id) {
+        adminService.deleteCar(id);
+        return ResponseEntity.ok(null);
+    }
+
 }
