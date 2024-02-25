@@ -1,12 +1,12 @@
 package com.mohamed.controllers;
 
+import com.mohamed.dto.BookDto;
 import com.mohamed.dto.CarDto;
 import com.mohamed.services.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +22,14 @@ public class CustomerController {
     public ResponseEntity<List<CarDto>> getAllCars(){
         List<CarDto> carDtoList = customerService.getAllCars();
         return ResponseEntity.ok(carDtoList);
+    }
+
+    // book a car
+    @PostMapping("/car/book")
+    public ResponseEntity<Void> carBooking(@RequestBody BookDto bookDto) {
+        boolean success = customerService.bookCar(bookDto);
+        if (success) return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
 }
