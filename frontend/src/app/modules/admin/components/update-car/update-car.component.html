@@ -2,6 +2,17 @@
     <form class="w-full max-w-lg" [formGroup]="updateForm">
         <div class="flex items-center justify-center mb-8"> 
 
+            <legend class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            <input class="file-input file-input-bordered file-input-primary w-full max-w-xs" id="upload_profile_image"
+                accept="image/x-png, image/gif, image/jpeg" type="file" (change)="onFileSelected($event)">
+            </legend>
+            
+                <div class="avatar" *ngIf="imagePreview">
+                    <img [src]="imagePreview" alt="Existing Image"
+                        class="w-24 rounded-full"
+                    />
+                </div> 
+
             <div class="avatar" *ngIf="existingImage">
                 <img [src]="existingImage" alt="Existing Image"
                     class="w-24 rounded-full"
@@ -124,7 +135,7 @@
             </div>
         </div>
         <div class="flex items-center justify-center">
-            <button class="btn btn-primary">Update</button>
+            <button class="btn btn-primary" (click)="updateCar()">Update</button>
         </div>
 
     </form>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-car',
@@ -11,6 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UpdateCarComponent {
   
   carId: number = this.activatedRoute.snapshot.params['id'];
+  imgChanged: boolean = false;
+  selectedFile: any;
+  imagePreview: string | ArrayBuffer | null = null;
   existingImage: string | null = null;
   updateForm!: FormGroup;
   listOfOption: Array<{ label: string; value: string }> = [];
@@ -110,7 +114,9 @@ export class UpdateCarComponent {
   constructor(
     private adminService: AdminService,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -137,4 +143,52 @@ export class UpdateCarComponent {
       this.updateForm.patchValue(carDto);
     });
   }
+
+  updateCar() {
+    const formData: FormData = new FormData();
+    if(this.imgChanged && this.selectedFile)
+    {
+      formData.append('image', this.selectedFile);
+    }
+    formData.append('year', this.updateForm.get('year')?.value);
+    formData.append('name', this.updateForm.get('name')?.value);
+    formData.append('price', this.updateForm.get('price')?.value);
+    formData.append('transmission', this.updateForm.get('transmission')?.value);
+    formData.append('brand', this.updateForm.get('brand')?.value);
+    formData.append('type', this.updateForm.get('type')?.value);
+    formData.append('color', this.updateForm.get('color')?.value);
+    formData.append('description', this.updateForm.get('description')?.value);
+    // print the formdata in the console
+    formData.forEach((value, key) => {
+      console.log(key + ', ' + value);
+    });
+    this.adminService.updateCar(this.carId, formData).subscribe({
+      next: (res) => {
+        this.toastr.success('Car updated Successfully', 'Success');
+        this.router.navigateByUrl('/admin/dashboard');
+        console.log(res);
+      },
+      error: (err) => {
+        this.toastr.error('Failed to update Car', 'Error');
+      },
+    });
+  }
+    
+
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.imgChanged = true;
+    this.existingImage = null;
+    this.previewImage();
+  }
+
+  previewImage() {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
+  }
+
 }
