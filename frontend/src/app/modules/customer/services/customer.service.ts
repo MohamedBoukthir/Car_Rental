@@ -23,6 +23,13 @@ export class CustomerService {
     });
   }
 
+  // function to get car by id
+  getCarById(carId: number): Observable<any> {
+    return this.http.get(BASE_URL + 'car/' + carId, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
