@@ -30,6 +30,12 @@ static getUser(){
   return JSON.parse(localStorage.getItem(USER) as string);
 }
 
+static getUserId(): string {
+  const user = this.getUser();
+  if (user == null) { return '';}
+  return user.id;
+}
+
 static getUserRole(): string {
   const user = this.getUser();
   if (user == null) return '';

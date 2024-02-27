@@ -1,4 +1,4 @@
-<div class="p-10 grid grid-cols-1 shadow-gray-950 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5" *ngIf="car">
+<div class="p-10 grid grid-cols-1 shadow-gray-950 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5" *ngIf="car">
     <!--Card -->
     <div class="rounded overflow-hidden shadow-lg">
         <img class="w-full" [src]="processedImg" alt="Cars">
@@ -25,9 +25,22 @@
                 class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Model
                 Year : {{ car.year }} </span>
         </div>
-        <div class="flex items-center justify-center mb-2">
-            <button class="btn btn-primary text-white" routerLink="/customer/book/{{car.id}}">Book Now</button>
-        </div>  
     </div>
+    <form [formGroup]="validateForm">
+        <div class="px-6 pt-4 pb-2">
+            <div class="flex flex-col mb-4">
+              <label for="fromDate" class="mb-2 font-bold text-lg">From Date:</label>
+              <input id="fromDate" type="date" formControlName="fromDate" class="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 p-2 border rounded-md">
+            </div>
+          
+            <div class="flex flex-col mb-4">
+              <label for="toDate" class="mb-2 font-bold text-lg">To Date:</label>
+              <input id="toDate" type="date" formControlName="toDate" class="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 p-2 border rounded-md">
+            </div>
+          </div>
+        <div class="flex items-center justify-center mb-2">
+            <button class="btn btn-primary text-white" (click)="bookCar(validateForm.value)">Book Now</button>
+        </div>
+        </form>
 
 </div>

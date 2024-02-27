@@ -30,6 +30,13 @@ export class CustomerService {
     });
   }
 
+    // function to get car by id
+    carBooking(book: any): Observable<any> {
+      return this.http.post(BASE_URL + 'car/book' , book, {
+        headers: this.createAuthorizationHeader(),
+      });
+    }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
