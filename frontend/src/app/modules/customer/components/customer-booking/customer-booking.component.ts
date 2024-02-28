@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customer-booking',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './customer-booking.component.css'
 })
 export class CustomerBookingComponent {
+
+  bookings : any = [];
+
+  constructor(
+    private customerService: CustomerService
+  ) { 
+    this.getMyBookings();
+  }
+
+  getMyBookings() {
+    this.customerService.getBookingByUserId().subscribe((res) => {
+      console.log(res)
+      this.bookings = res;
+    })
+  }
+
+
 
 }

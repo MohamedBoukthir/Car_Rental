@@ -6,6 +6,7 @@ import { CustomerDashboardComponent } from './components/customer-dashboard/cust
 import { BookingComponent } from './components/booking/booking.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingComponent } from './components/customer-booking/customer-booking.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -18,7 +19,12 @@ import { CustomerBookingComponent } from './components/customer-booking/customer
     CommonModule,
     CustomerRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ]
 })
 export class CustomerModule { }

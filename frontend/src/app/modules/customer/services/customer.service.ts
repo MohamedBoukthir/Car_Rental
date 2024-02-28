@@ -37,6 +37,13 @@ export class CustomerService {
       });
     }
 
+      // function to get car by id
+      getBookingByUserId(): Observable<any> {
+    return this.http.get(BASE_URL + 'car/booking/' + StorageService.getUserId(), {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(

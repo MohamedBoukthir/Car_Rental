@@ -28,8 +28,8 @@ export class BookingComponent {
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      toDate: [null, Validators.required],
-      fromDate: [null, Validators.required]
+      toDate: ["", Validators.required],
+      fromDate: ["", Validators.required]
     })
     this.getCarById();
   }
