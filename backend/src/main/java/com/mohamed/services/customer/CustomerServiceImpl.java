@@ -42,9 +42,11 @@ public class CustomerServiceImpl implements CustomerService {
             book.setCar(existingCar);
             book.setBookingStatus(BookingStatus.PENDING);
             long diffInMilliSeconds = bookDto.getToDate().getTime() - bookDto.getFromDate().getTime();
-            long days = TimeUnit.MICROSECONDS.toDays(diffInMilliSeconds);
+            long days = TimeUnit.MILLISECONDS.toDays(diffInMilliSeconds);
             book.setDays(days);
             book.setPrice(existingCar.getPrice() * days);
+            book.setFromDate(bookDto.getFromDate());
+            book.setToDate(bookDto.getToDate());
             bookRepository.save(book);
             return true;
         }
