@@ -40,4 +40,10 @@ public class CustomerController {
         return ResponseEntity.ok(carDto);
     }
 
+    // get bookings by user Id
+    @GetMapping("/car/booking/{userId}")
+    public ResponseEntity<List<BookDto>> getBookingByUserId(@PathVariable Long userId){
+        return ResponseEntity.ok(customerService.getBookingByUserId(userId));
+    }
+
 }

@@ -16,5 +16,7 @@ public class BookDto {
     private BookingStatus bookingStatus;
     private Long userId;
     private Long carId;
+    private String username;
+    private String email;
 
 }
