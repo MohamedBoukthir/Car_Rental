@@ -40,11 +40,19 @@ export class AdminService {
   }
 
     // function to update car
-    updateCar(carId : number, carDto : any): Observable<any> {
+  updateCar(carId : number, carDto : any): Observable<any> {
       return this.http.put(BASE_URL + 'car/' + carId , carDto , {
         headers: this.createAuthorizationHeader(),
       })
     }
+
+      // function to get all bookings
+  getAllBookings(): Observable<any> {
+    return this.http.get(BASE_URL + 'car/bookings', {
+      headers: this.createAuthorizationHeader(),
+    });
+  
+  }
 
 
   createAuthorizationHeader(): HttpHeaders {
