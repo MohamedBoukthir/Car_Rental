@@ -7,13 +7,15 @@ import { PostCarComponent } from './components/post-car/post-car.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { UpdateCarComponent } from './components/update-car/update-car.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     PostCarComponent,
-    UpdateCarComponent
+    UpdateCarComponent,
+    GetBookingsComponent
   ],
   imports: [
     CommonModule,
