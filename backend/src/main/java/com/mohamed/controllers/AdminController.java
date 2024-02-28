@@ -1,5 +1,6 @@
 package com.mohamed.controllers;
 
+import com.mohamed.dto.BookDto;
 import com.mohamed.dto.CarDto;
 import com.mohamed.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin")
@@ -57,6 +59,12 @@ public class AdminController {
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+    }
+
+    // get all bookings
+    @GetMapping("/car/bookings")
+    public ResponseEntity<List<BookDto>> getBookings(){
+        return ResponseEntity.ok(adminService.getBookings());
     }
 
 }

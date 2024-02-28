@@ -1,7 +1,10 @@
 package com.mohamed.services.admin;
 
+import com.mohamed.dto.BookDto;
 import com.mohamed.dto.CarDto;
+import com.mohamed.entities.Book;
 import com.mohamed.entities.Car;
+import com.mohamed.repositories.BookRepository;
 import com.mohamed.repositories.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ import java.util.stream.Collectors;
 public class AdminServiceImpl implements AdminService {
 
     private final CarRepository carRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public boolean addCar(CarDto carDto) throws IOException {
@@ -73,5 +77,10 @@ public class AdminServiceImpl implements AdminService {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public List<BookDto> getBookings() {
+        return bookRepository.findAll().stream().map(Book::getBookCarDto).collect(Collectors.toList());
     }
 }
