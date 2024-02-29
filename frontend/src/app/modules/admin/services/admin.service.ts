@@ -51,9 +51,14 @@ export class AdminService {
     return this.http.get(BASE_URL + 'car/bookings', {
       headers: this.createAuthorizationHeader(),
     });
-  
   }
 
+        // function to change booking status
+        changeBookingStatus(bookingId: number, status: string): Observable<any> {
+          return this.http.get(BASE_URL + `car/booking/${bookingId}/${status}`, {
+            headers: this.createAuthorizationHeader(),
+          });
+        }
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();

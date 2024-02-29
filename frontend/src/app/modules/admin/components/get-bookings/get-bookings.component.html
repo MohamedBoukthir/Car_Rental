@@ -10,6 +10,7 @@
           <th>Days</th>
           <th>Price</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,12 @@
           }">
                 {{booking.bookingStatus}}
             </strong>
+          </td>
+          <td>
+            <span class="space-x-2 space-y-2" *ngIf="booking.bookingStatus == 'PENDING'">
+              <button class="btn btn-success" (click)="changeBookingStatus(booking.id, 'APPROVED')">Approve</button>
+              <button class="btn btn-error" (click)="changeBookingStatus(booking.id, 'REJECTED')">Reject</button>
+            </span>
           </td>
         </tr>
       </tbody>

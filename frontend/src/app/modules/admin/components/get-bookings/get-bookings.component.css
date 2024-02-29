@@ -1,0 +1,14 @@
+.status-approved {
+    color: green;
+    -webkit-text-stroke: 0.2px black;
+}
+
+.status-rejected {
+    color: red;
+    -webkit-text-stroke: 0.2px black;
+}
+
+.status-pending {
+    color: orange;
+    -webkit-text-stroke: 0.2px black;
+}
