@@ -2,6 +2,8 @@ package com.mohamed.services.admin;
 
 import com.mohamed.dto.BookDto;
 import com.mohamed.dto.CarDto;
+import com.mohamed.dto.CarListDto;
+import com.mohamed.dto.SearchDto;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,5 +23,7 @@ public interface AdminService {
     List<BookDto> getBookings();
 
     boolean changeBookingStatus(Long bookingId, String status);
+
+    CarListDto searchCar(SearchDto searchDto);
 
 }

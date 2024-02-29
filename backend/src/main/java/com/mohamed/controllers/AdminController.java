@@ -2,6 +2,7 @@ package com.mohamed.controllers;
 
 import com.mohamed.dto.BookDto;
 import com.mohamed.dto.CarDto;
+import com.mohamed.dto.SearchDto;
 import com.mohamed.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -72,5 +73,11 @@ public class AdminController {
         boolean success = adminService.changeBookingStatus(bookingId, status);
         if (success) return ResponseEntity.ok().build();
         return ResponseEntity.notFound().build();
+    }
+
+    // search for car
+    @PostMapping("/car/search")
+    public ResponseEntity<?> search(@RequestBody SearchDto searchDto) {
+        return ResponseEntity.ok(adminService.searchCar(searchDto));
     }
 }
