@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { UpdateCarComponent } from './components/update-car/update-car.component';
 import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { GetBookingsComponent } from './components/get-bookings/get-bookings.com
     DashboardComponent,
     PostCarComponent,
     UpdateCarComponent,
-    GetBookingsComponent
+    GetBookingsComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
