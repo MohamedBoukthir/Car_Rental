@@ -18,3 +18,4 @@ spring:
     database: mysql
     # Set the Hibernate dialect for MySQL 8
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
