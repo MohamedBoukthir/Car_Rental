@@ -23,7 +23,6 @@ export class DashboardComponent {
     this.adminService.getAllCars().subscribe((res) => {
       console.log(res);
       res.forEach((element: any) => {
-        // Explicitly define the type of 'element' as 'any'
         element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;
         this.cars.push(element);
       });

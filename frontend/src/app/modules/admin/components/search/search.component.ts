@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-search',
@@ -7,6 +8,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './search.component.css'
 })
 export class SearchComponent {
+
+  cars: any = [];
 
   searchForm!: FormGroup;
   listOfOption: Array<{ label: string; value: string }> = [];
@@ -104,7 +107,8 @@ export class SearchComponent {
   listOfTransmission = ['Automatic', 'Manual', 'Semi-Automatic'];
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private adminService: AdminService
   ) { 
     this.searchForm = this.fb.group({
       brand: [''],
@@ -115,7 +119,12 @@ export class SearchComponent {
   }
 
   search() {
-    console.log(this.searchForm.value);
+    this.adminService.search(this.searchForm.value).subscribe((res) => {
+      res.carDtoList.forEach((element: any) => {
+        element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;
+        this.cars.push(element);
+      });
+    })
   }
 
   get transmission() {
