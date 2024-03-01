@@ -10,6 +10,7 @@ import { AdminService } from '../../services/admin.service';
 export class SearchComponent {
 
   cars: any = [];
+  searchClicked = false;
 
   searchForm!: FormGroup;
   listOfOption: Array<{ label: string; value: string }> = [];
@@ -119,6 +120,7 @@ export class SearchComponent {
   }
 
   search() {
+    this.searchClicked = true;
     this.adminService.search(this.searchForm.value).subscribe((res) => {
       res.carDtoList.forEach((element: any) => {
         element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;

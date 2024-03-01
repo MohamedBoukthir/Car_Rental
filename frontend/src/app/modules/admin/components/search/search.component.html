@@ -82,6 +82,10 @@
     </form>
 </div>
 
+<div *ngIf="searchClicked && cars.length === 0" class="flex justify-center mt-16">
+    <h2 class="font-bold text-red-500">Sorry, No results found</h2>
+</div>
+
 <div class="p-10 grid grid-cols-1 shadow-gray-950 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
     <!--Card -->
     <div class="rounded overflow-hidden shadow-lg" *ngFor="let car of cars">
