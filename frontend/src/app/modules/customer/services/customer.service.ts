@@ -44,6 +44,13 @@ export class CustomerService {
     });
   }
 
+      // function to search car
+      search(SearchCarDto: any): Observable<any> {
+        return this.http.post(BASE_URL + 'car/search', SearchCarDto, {
+          headers: this.createAuthorizationHeader(),
+        });
+      }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
