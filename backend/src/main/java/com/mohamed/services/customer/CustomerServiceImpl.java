@@ -2,6 +2,8 @@ package com.mohamed.services.customer;
 
 import com.mohamed.dto.BookDto;
 import com.mohamed.dto.CarDto;
+import com.mohamed.dto.CarListDto;
+import com.mohamed.dto.SearchDto;
 import com.mohamed.entities.Book;
 import com.mohamed.entities.Car;
 import com.mohamed.entities.User;
@@ -10,6 +12,8 @@ import com.mohamed.repositories.BookRepository;
 import com.mohamed.repositories.CarRepository;
 import com.mohamed.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,5 +66,24 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<BookDto> getBookingByUserId(Long userId) {
         return bookRepository.findAllByUserId(userId).stream().map(Book::getBookCarDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public CarListDto searchCar(SearchDto searchDto) {
+        Car car = new Car();
+        car.setBrand(searchDto.getBrand());
+        car.setType(searchDto.getType());
+        car.setTransmission(searchDto.getTransmission());
+        car.setColor(searchDto.getColor());
+        ExampleMatcher exampleMatcher = ExampleMatcher.matchingAll()
+                .withMatcher("brand",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+                .withMatcher("type",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+                .withMatcher("transmission",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+                .withMatcher("color",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+        Example<Car> carExample = Example.of(car, exampleMatcher);
+        List<Car> carList = carRepository.findAll(carExample);
+        CarListDto carListDto = new CarListDto();
+        carListDto.setCarDtoList(carList.stream().map(Car::getCarDto).collect(Collectors.toList()));
+        return carListDto;
     }
 }
