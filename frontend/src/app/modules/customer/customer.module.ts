@@ -7,13 +7,15 @@ import { BookingComponent } from './components/booking/booking.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerBookingComponent } from './components/customer-booking/customer-booking.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
   declarations: [
     CustomerDashboardComponent,
     BookingComponent,
-    CustomerBookingComponent
+    CustomerBookingComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
