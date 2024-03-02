@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './shared/home/home.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { HomeComponent } from './shared/home/home.component';
     RegisterComponent,
     ContainerComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
