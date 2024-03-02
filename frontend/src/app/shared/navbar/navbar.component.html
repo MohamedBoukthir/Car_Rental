@@ -1,7 +1,7 @@
 <!-- Original Navbar -->
 <div class="navbar bg-base-100" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
     <div class="navbar-start">
-        <a class="btn btn-ghost text-xl" routerLink="login">
+        <a class="btn btn-ghost text-xl" routerLink="/">
             SwiftWheels
         </a>
     </div>
@@ -18,7 +18,7 @@
 <div class="navbar bg-base-100" *ngIf="isAdminLoggedIn">
 
     <div class="navbar-start">
-        <a class="btn btn-ghost text-xl">
+        <a class="btn btn-ghost text-xl" routerLink="/">
             Admin
         </a>
     </div>
@@ -43,7 +43,7 @@
 <!-- Customer Navbar -->
 <div class="navbar bg-base-100" *ngIf="isCustomerLoggedIn">
     <div class="navbar-start">
-        <a class="btn btn-ghost text-xl">
+        <a class="btn btn-ghost text-xl" routerLink="/">
             SwiftWheels
         </a>
     </div>
