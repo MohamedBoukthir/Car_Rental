@@ -5,6 +5,15 @@
             SwiftWheels
         </a>
     </div>
+    <div class="navbar-end gap-3">
+        <button class="btn btn-outline btn-primary" routerLink="register" routerLinkActive="active">
+            Register
+        </button>
+        <button class="btn btn-primary" routerLink="login" routerLinkActive="active">
+            Login
+        </button>
+    </div>
+
 </div>
 <!-- Admin Navbar -->
 <div class="navbar bg-base-100" *ngIf="isAdminLoggedIn">
