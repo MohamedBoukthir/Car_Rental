@@ -13,9 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './shared/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { CarouselComponent } from './shared/carousel/carousel.component';
-
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,12 +24,12 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
