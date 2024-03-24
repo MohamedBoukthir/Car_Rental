@@ -27,5 +27,18 @@ Perform CRUD operations on cars, manage booking requests, and utilize advanced s
 Log in as a customer to browse car listings, book cars for specific dates, and view past bookings.
 Utilize advanced search options to find the perfect rental vehicle.
 
+## Screenshot
+
+![home1](https://github.com/MohamedBoukthir/Car_Rental/assets/124532428/f4312a19-6f88-4553-b58b-9c146dab914d)
+
+
+![home2](https://github.com/MohamedBoukthir/Car_Rental/assets/124532428/9704b081-c093-46ed-8685-244474ce37f1)
+
+![adminDash](https://github.com/MohamedBoukthir/Car_Rental/assets/124532428/218f4837-09d1-44cc-8228-54062e12680a)
+
+![customer booking](https://github.com/MohamedBoukthir/Car_Rental/assets/124532428/cc99119c-9440-4e7a-8457-63a9ba1488b3)
+
+
+
 
 
